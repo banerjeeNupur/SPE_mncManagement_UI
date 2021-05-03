@@ -8,7 +8,7 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import TextField from '@material-ui/core/TextField';
 import base_url from "../api/bootapi";
-import employeeService from "../services/employeeService";
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -45,6 +45,13 @@ class Login extends Component {
         this.validateForm = this.validateForm.bind(this);
     }
 
+    componentDidMount(){
+        window.localStorage.clear()
+       // window.location.reload();
+        // console.log('clearing local storage')
+        // localStorage.clear()
+    }
+
     handleChange = (event) => {
         const {name, value} = event.target
         this.setState({
@@ -55,7 +62,7 @@ class Login extends Component {
     async handleSubmit(event) {
         event.preventDefault();
         event.stopPropagation();
-
+        localStorage.clear()
         console.log('login component')
         let response = await fetch(`${base_url}`+'/login', {
             method: 'POST',
@@ -69,33 +76,34 @@ class Login extends Component {
                 user_type: this.state.user_type
             })
         });
-        // let status = response.status;
-        console.log('response is: ',response)
-        // need to return custom status and redirect to admin/mgr/engg dashboard as per that
-        // if (status === 200) {
-        //
-        //     this.props.history.push({
-        //         pathname: '/ManagerDashboard',
-        //         credentials: await response.json()
-        //     });
-        // }
-        // else if (response.user_type === 'admin' && status === 200){
-        //     this.props.history.push({
-        //         pathname: '/AdminDashboard',
-        //         credentials: await response.json()
-        //     });
-        // }
-        //
-        // else if (status === 404) {
-        //     this.setState({
-        //         errorMessage: true
-        //     })
-        // } else {
-        //     this.props.history.push({
-        //         pathname: '/Error404',
-        //         message: 'Backend server is down'
-        //     });
-        // }
+        let status = response.status;
+        // console.log('response is: ',response.json())
+        if (status === 200) {
+        
+            this.props.history.push({
+                pathname: '/LoginMid',
+                credentials: await response.json()
+            });
+            // localStorage.setItem('credentials',this.props.location.credentials)
+            console.log('manager logged in! :',this.credentials)
+        }
+        else if (response.user_type === 'admin' && status === 200){
+            this.props.history.push({
+                pathname: '/AdminDashboard',
+                credentials: await response.json()
+            });
+        }
+        
+        else if (status === 404) {
+            this.setState({
+                errorMessage: true
+            })
+        } else {
+            this.props.history.push({
+                pathname: '/Error404',
+                message: 'Backend server is down'
+            });
+        }
     }
 
 

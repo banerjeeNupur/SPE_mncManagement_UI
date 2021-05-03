@@ -13,14 +13,35 @@ import {Switch} from "react-router";
 import AddProject from "./AddProject";
 import DemoChart from "./DemoChart";
 import Profile from "./Profile";
+import Login from "./Login"
+
 class ManagerDashboard extends Component{
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
+        this.state = {
+            // credentials : this.props.location.credentials
+            
+        }
+        this.logout = this.logout.bind(this);
+        
+    }
+
+    componentDidMount(){
+        // console.log('mgr : ',this.state.credentials);
+        
+        
+    }
+
+    logout(){
+        console.log('clearing local storage')
+        localStorage.clear()
     }
 
     render() {
+
         return(
+            
             <Router>
                 <Container>
                     <Header></Header>
@@ -32,6 +53,8 @@ class ManagerDashboard extends Component{
                                 <ListGroupItem><Link to="/ProjectList">Projects</Link></ListGroupItem>
                                 <ListGroupItem><Link to="/Requests">Project requests</Link></ListGroupItem>
                                 <ListGroupItem><Link to="/UserProfile">Profile</Link></ListGroupItem>
+                                {/* target='_blank' */}
+                                <ListGroupItem><Link to="/Login" onClick={this.logout} >Logout</Link></ListGroupItem>
                             </ListGroup>
                         </Col>
                         <Col md={8}>
@@ -47,11 +70,14 @@ class ManagerDashboard extends Component{
 
 
                         </Col>
+                        
                     </Row>
                 </Container>
             </Router>
 
         )
+        
+        
     }
 }
 
