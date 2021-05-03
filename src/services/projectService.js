@@ -32,7 +32,7 @@ class ProjectService {
     }
 
     makeRequest(data){
-
+        return http.post("/project/request/add",data);
     }
     //
     // deleteAll() {

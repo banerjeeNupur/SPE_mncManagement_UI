@@ -14,6 +14,7 @@ class Register extends Component{
         this.addUser = this.addUser.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.validateForm = this.validateForm.bind(this);
+        this.handleChangeUsername = this.handleChangeUsername.bind(this)
     }
 
     handleChange = (event) => {
@@ -22,11 +23,25 @@ class Register extends Component{
             [name]: value
         })
     }
+
+    handleChangeUsername(e){
+        const username = e.target.value;
+        this.setState(function(prevState) {
+            return {
+
+                    ...prevState.username,
+                    username: username
+                
+            };
+        });
+    }
+
     validateForm() {
         return this.state.username.length > 0 && this.state.password.length > 0 && this.state.user_type.length>0;
     }
 
     addUser(){
+        console.log('username is :',this.state.username)
         var data={
             username: this.state.username,
             password: this.state.password,
@@ -74,7 +89,7 @@ class Register extends Component{
                                 className="form-control"
                                 id="username"
                                 required
-                                onChange={this.handleChange}
+                                onChange={this.handleChangeUsername}
                             />
                         </div>
 

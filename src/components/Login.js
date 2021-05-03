@@ -45,12 +45,7 @@ class Login extends Component {
         this.validateForm = this.validateForm.bind(this);
     }
 
-    componentDidMount(){
-        window.localStorage.clear()
-       // window.location.reload();
-        // console.log('clearing local storage')
-        // localStorage.clear()
-    }
+    
 
     handleChange = (event) => {
         const {name, value} = event.target
@@ -93,6 +88,11 @@ class Login extends Component {
             else if (responseJson.user_type === 'manager'){
                 this.props.history.push({
                 pathname: '/ManagerDashboard',
+            });
+            }
+            else if (responseJson.user_type === 'dev'){
+                this.props.history.push({
+                pathname: '/MakeRequest',
             });
             }    
         }

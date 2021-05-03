@@ -8,10 +8,16 @@ class MakeRequest extends Component{
     constructor(props) {
         super(props);
         this.retrieveProjects = this.retrieveProjects.bind(this);
+        this.sendRequest = this.sendRequest.bind(this)
         this.state = {
             projects: [],
             currentProject: null,
-            currentIndex: null
+            currentIndex: null,
+            requests: {
+                empId: "",
+                projectId: "",
+                status: "pending"
+            }
         };
     }
 
@@ -40,9 +46,15 @@ class MakeRequest extends Component{
     }
 
     sendRequest(){
-        projectService.makeRequest(
-            this.state.currentProject
-        )
+
+        var data = {
+            empId: localStorage.getItem('current_user_id'),
+            projectId: this.state.currentProject.projectId,
+            status: 'pending'
+        }
+
+        console.log(data)
+        projectService.makeRequest(data)
             .then(response => {
                 console.log(response.data);
                 this.setState({
@@ -52,6 +64,8 @@ class MakeRequest extends Component{
             .catch(e => {
                 console.log(e);
             });
+
+        console.log(this.state.currentProject)
     }
 
     render(){

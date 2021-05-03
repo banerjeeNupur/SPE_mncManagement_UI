@@ -15,14 +15,23 @@ import EmployeeDetails from "./EmployeeDetails";
 class AdminDashboard extends Component{
     constructor(props) {
         super(props);
+        this.logout = this.logout.bind(this)
         this.state = {
             empId: null,
             user_type: ""
         }
     }
     componentDidMount() {
-
         console.log('from the admin: ',this.props.empId)
+    }
+
+    logout(){
+        console.log('clearing local storage')
+        localStorage.removeItem('current_user_type')
+        localStorage.removeItem('current_user_id')
+        this.props.history.push({
+            pathname: '/Login',
+        });
     }
 
     render() {
@@ -38,6 +47,7 @@ class AdminDashboard extends Component{
                                 <ListGroupItem><Link to="/AdminDashboard">Home</Link></ListGroupItem>
                                 <ListGroupItem><Link to="/Add">Register a new User</Link></ListGroupItem>
                                 <ListGroupItem><Link to="/ViewAll">Employee List</Link></ListGroupItem>
+                                <ListGroupItem><Link to="/Login" onClick={this.logout} >Logout</Link></ListGroupItem>
                             </ListGroup>
                         </Col>
                         <Col md={8}>

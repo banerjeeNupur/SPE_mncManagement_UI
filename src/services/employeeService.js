@@ -13,6 +13,14 @@ class EmployeeService{
     getAll() {
         return http.get("/listEmployees");
     }
+
+    getUser(id){
+        return http.get(`/employee/view/${id}`);
+    }
+
+    updateProfile(data){
+        return http.put("/employee/updateDetails", data);
+    }
 }
 
 export default new EmployeeService();
