@@ -20,22 +20,22 @@ class ManagerDashboard extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            // credentials : this.props.location.credentials
-            
         }
         this.logout = this.logout.bind(this);
         
     }
 
     componentDidMount(){
-        // console.log('mgr : ',this.state.credentials);
-        
-        
+
     }
 
     logout(){
         console.log('clearing local storage')
-        localStorage.clear()
+        localStorage.removeItem('current_user_type')
+        localStorage.removeItem('current_user_id')
+        this.props.history.push({
+            pathname: '/Login',
+        });
     }
 
     render() {

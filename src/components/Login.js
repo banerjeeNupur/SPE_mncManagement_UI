@@ -77,21 +77,24 @@ class Login extends Component {
             })
         });
         let status = response.status;
-        // console.log('response is: ',response.json())
-        if (status === 200) {
         
-            this.props.history.push({
-                pathname: '/LoginMid',
-                credentials: await response.json()
-            });
-            // localStorage.setItem('credentials',this.props.location.credentials)
-            console.log('manager logged in! :',this.credentials)
-        }
-        else if (response.user_type === 'admin' && status === 200){
-            this.props.history.push({
+        if (status === 200) {
+            let responseJson = await response.json()
+            console.log('manager logged in! :', responseJson)
+            console.log('user type is : ',responseJson.user_type)
+           
+            localStorage.setItem('current_user_id',responseJson.empId)
+            localStorage.setItem('current_user_type',responseJson.user_type)
+            if(responseJson.user_type === 'admin'){
+                this.props.history.push({
                 pathname: '/AdminDashboard',
-                credentials: await response.json()
             });
+            }
+            else if (responseJson.user_type === 'manager'){
+                this.props.history.push({
+                pathname: '/ManagerDashboard',
+            });
+            }    
         }
         
         else if (status === 404) {
