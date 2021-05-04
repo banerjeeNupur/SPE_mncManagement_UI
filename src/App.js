@@ -10,7 +10,7 @@ import SignIn from "./components/SignIn";
 import LoginMid from "./components/LoginMid";
 import Requests from "./components/Requests";
 import MakeRequest from "./components/MakeRequest";
-
+import DeveloperDashboard from "./components/DeveloperDashboard"
 class App extends Component{
 
     render(){
@@ -28,6 +28,7 @@ class App extends Component{
                 <Route exact path="/LoginMid" component={LoginMid}/>
                 <Route exact path="/Requests" component={Requests}/>
                 <Route exact path="/MakeRequest" component={MakeRequest}/>
+                <Route exact path="/DeveloperDashboard" component={DeveloperDashboard}/>
                 {/*</Route>
                 {/*<Route exact path="/BuyStock" component={BuyStock}>*/}
                 {/*</Route>*/}

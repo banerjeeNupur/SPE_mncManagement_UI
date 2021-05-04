@@ -34,6 +34,12 @@ class ProjectService {
     makeRequest(data){
         return http.post("/project/request/add",data);
     }
+
+    // get requests made by an employee
+    getEmpRequest(id){
+        return http.get(`/project/request/getEmpReq/${id}`)
+    }
+
     //
     // deleteAll() {
     //     return http.delete(`/tutorials`);

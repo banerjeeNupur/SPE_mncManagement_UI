@@ -92,7 +92,7 @@ class Login extends Component {
             }
             else if (responseJson.user_type === 'dev'){
                 this.props.history.push({
-                pathname: '/MakeRequest',
+                pathname: '/DeveloperDashboard',
             });
             }    
         }
