@@ -13,6 +13,9 @@ import {Switch} from "react-router";
 import AddProject from "./AddProject";
 import DemoChart from "./DemoChart";
 import UserProfile from "./UserProfile";
+import Requests from "./Requests"
+import DevList from "./DevList"
+
 
 class ManagerDashboard extends Component{
 
@@ -52,6 +55,7 @@ class ManagerDashboard extends Component{
                                 <ListGroupItem><Link to="/ProjectList">Projects</Link></ListGroupItem>
                                 <ListGroupItem><Link to="/Requests">Project requests</Link></ListGroupItem>
                                 <ListGroupItem><Link to="/UserProfile">Profile</Link></ListGroupItem>
+                                <ListGroupItem><Link to="/DevList">Developer details</Link></ListGroupItem>
                                 <ListGroupItem><Link to="/Login" onClick={this.logout} >Logout</Link></ListGroupItem>
                             </ListGroup>
                         </Col>
@@ -62,6 +66,8 @@ class ManagerDashboard extends Component{
                                 <Route path="/addProject" component={AddProject} />
                                 <Route path="/DemoChart" component={DemoChart}/>
                                 <Route path="/UserProfile" component={UserProfile}/>
+                                <Route path="/Requests" component={Requests}  />
+                                <Route path="/DevList" component={DevList}/>
                                 <Route path="/" component={DemoChart}/>
 
                             </Switch>

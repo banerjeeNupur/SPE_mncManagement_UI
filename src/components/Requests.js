@@ -1,6 +1,10 @@
 import React, {Component} from "react";
 import projectService from "../services/projectService";
 import {Link} from "react-router-dom";
+import Row from "reactstrap/es/Row";
+import Col from "reactstrap/es/Col";
+import Container from "reactstrap/es/Container";
+
 class Requests extends Component{
 
     constructor(props) {
@@ -59,32 +63,25 @@ class Requests extends Component{
         return(
             <div>
 
+                <Container>
 
-                <div className="col-md-6">
-                    <ul className="list-group">
+                    <Row>
+                        <Col md={6}>
+                        <ul className="list-group">
                         {requests &&
                         requests.map((request, index) => (
-                            <li
-                                className={
-                                    "list-group-item " +
-                                    (index === currentIndex ? "active" : "")
-                                }
+                            <li className={"list-group-item " +(index === currentIndex ? "active" : "")}
                                 onClick={() => this.setActiveRequest(request, index)}
-                                key={index}
-                            >
-                                {/*{tutorial.projectId} <br/>*/}
+                                key={index}>
                                 Project ID : {request.projectId} <br/>
-                                {/*{tutorial.manager_id} <br/>*/}
-                                {/*{tutorial.technology} <br/>*/}
-                                {/*{tutorial.status} <br/>*/}
-
                             </li>
                         ))}
-
                     </ul>
-                </div>
-                <div className="col-md-6">
-                    {currentRequest ?(
+                        </Col>
+
+                        <Col md={6}>
+                            <div>
+                            {currentRequest ?(
                         <div>
                             
                             <div>
@@ -99,40 +96,26 @@ class Requests extends Component{
                                 </label>{" "}
                                 {currentRequest.empId}
                             </div>
-                            <div>
-                                <label>
-                                    <strong>Employee skills:</strong>
-                                </label>{" "}
-                                {currentRequest.id}
-                            </div>
+                            
+                       
 
-                            {/* <Link
-                                to={"/approveRequest/" + currentRequest.id}
-                                className="badge badge-warning">
-                                Approve
-                            </Link> */}
-
-                        <button
-                        type="submit"
-                        className="badge badge-success"
-                        onClick={this.updateRequest}>
-                        Update
+                        <button type="submit" className="badge badge-success" onClick={this.updateRequest}>
+                            Approve
+                        </button>
+                        <br/>
+                        <button type="submit" className="badge badge-success" onClick={this.updateRequest}>
+                            Reject
                         </button>
                         
                     </div>):(
                         <div>
                         <br />
-                        <p>Please click on a Project...</p>
+                        <p>Click on a request to view details</p>
                         </div>)}
-
-
-                </div>
-
-                <Link
-                    to={"/addProject"}
-                    className="badge badge-warning">
-                    Add
-                </Link>
+                            </div>        
+                        </Col>
+                    </Row>
+                </Container>
 
 
             </div>

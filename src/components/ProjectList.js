@@ -1,7 +1,8 @@
 import React, {Component} from "react";
-import Project from "./Project";
 import projectService from "../services/projectService";
-import {Link, Route} from "react-router-dom";
+import {Link} from "react-router-dom";
+import Row from "reactstrap/es/Row";
+import Col from "reactstrap/es/Col";
 
 class ProjectList extends Component{
 
@@ -10,7 +11,7 @@ class ProjectList extends Component{
         this.retrieveProjects = this.retrieveProjects.bind(this);
         this.state = {
             projects: [],
-            currentTutorial: null,
+            currentProject: null,
             currentIndex: -1,
             searchTitle: ""
         };
@@ -36,86 +37,97 @@ class ProjectList extends Component{
     refreshList() {
         this.retrieveProjects();
         this.setState({
-            currentTutorial: null,
+            currentProject: null,
             currentIndex: -1
         });
     }
 
-    setActiveTutorial(tutorial, index) {
+    setActiveProject(tutorial, index) {
         this.setState({
-            currentTutorial: tutorial,
+            currentProject: tutorial,
             currentIndex: index
         });
     }
 
 
     render() {
-        const { searchTitle, projects, currentTutorial, currentIndex } = this.state;
+        const { projects, currentProject, currentIndex } = this.state;
         return(
             <div>
 
-
-                <div className="col-md-6">
+                <Row>
+                    <Col md={6}>
                     <ul className="list-group">
                         {projects &&
-                        projects.map((tutorial, index) => (
+                        projects.map((p, index) => (
                             <li
-                                className={
-                                    "list-group-item " +
-                                    (index === currentIndex ? "active" : "")
-                                }
-                                onClick={() => this.setActiveTutorial(tutorial, index)}
-                                key={index}
-                            >
-                                {/*{tutorial.projectId} <br/>*/}
-                                {tutorial.name} <br/>
-                                {/*{tutorial.manager_id} <br/>*/}
-                                {/*{tutorial.technology} <br/>*/}
-                                {/*{tutorial.status} <br/>*/}
+                                className={"list-group-item" +(index === currentIndex ? "active" : "")}
+                                onClick={() => this.setActiveProject(p, index)}
+                                key={index}>
 
+                                Project ID : {p.projectId}<br/>
+                                
                             </li>
                         ))}
-
                     </ul>
-                </div>
-                <div className="col-md-6">
-                    {currentTutorial ?(
+                    </Col>    
+               <Col md={6}>
+               <div>
+                    {currentProject ?(
                         <div>
-                            <h4>Tutorial</h4>
+                            <h4>Project Details</h4>
+                            
+                            <div>
+                                <label>
+                                    <strong>Project ID:</strong>
+                                </label>{" "}
+                                {currentProject.projectId}
+                            </div>
+
                             <div>
                                 <label>
                                     <strong>Title:</strong>
                                 </label>{" "}
-                                {currentTutorial.name}
+                                {currentProject.name}
                             </div>
+
                             <div>
                                 <label>
-                                    <strong>Description:</strong>
+                                    <strong>Technology:</strong>
                                 </label>{" "}
-                                {currentTutorial.name}
+                                {currentProject.technology}
                             </div>
 
 
                             <Link
-                                to={"/view/" + currentTutorial.id}
+                                to={"/view/" + currentProject.id}
                                 className="badge badge-warning">
                                 Edit
                             </Link>
                         </div>
                     ):  (
-                        <div>
-                        <br />
-                        <p>Please click on a Project...</p>
-                        </div>)}
+                        
+                            <div>
+                            <br />
+                            <p>Click on a project to view details</p>
+                        </div>
+                     
+                        )}
 
 
-                </div>
-
+                     </div>
+               </Col>
+                
+                </Row>
+                <br/><br/>
+                <Row>
                 <Link
                     to={"/addProject"}
                     className="badge badge-warning">
-                    Add
+                    Add a new Project
                 </Link>
+                </Row>
+                
 
 
             </div>

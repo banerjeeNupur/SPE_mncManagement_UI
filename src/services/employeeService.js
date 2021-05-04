@@ -21,6 +21,10 @@ class EmployeeService{
     updateProfile(data){
         return http.put("/employee/updateDetails", data);
     }
+
+    getAllDev(){
+        return http.get("/list/dev");
+    }
 }
 
 export default new EmployeeService();
