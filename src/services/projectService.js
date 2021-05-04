@@ -40,6 +40,21 @@ class ProjectService {
         return http.get(`/project/request/getEmpReq/${id}`)
     }
 
+    // get all the projects available for employee by Emp ID
+    getAvailableProjects(id){
+        return http.get(`/project/available/${id}`)
+    }
+
+    // get the projects that the employee is working on. Active projects
+    getActiveProjects(id){
+        return http.get(`/project/active/${id}`)
+    }
+
+    // get completed projects
+    getCompletedProjects(id){
+        return http.get(`/project/complete/${id}`)
+    }
+
     //
     // deleteAll() {
     //     return http.delete(`/tutorials`);

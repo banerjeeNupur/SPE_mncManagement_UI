@@ -40,28 +40,32 @@ class DevRequests extends Component{
 
     render(){
 
-        const { requests } = this.state.requests;
-        // console.log('request in render: ',requests)  -------- empty list 
-        console.log('request in render: ',this.state.requests)
-        return this.state.requests.length ? (
+        if(!this.state.loaded) {
+            return (
+                <div><h1>Loading Data</h1></div>
+            )
+        }
+
+        const request = this.state.requests
+        
+        return (
            
                 <div >
                 <h3>Request list</h3>
-                    <ul className="list-group">
-                        {requests &&
-                        requests.map((request) => (
+                
+                <ul className="list-group">
+                        {request &&
+                        request.map((req) => (
                        
                             <li className={"list-group-item "}>
-                                {request.data.projectId} 
+                                Project ID : {req.projectId} <br/>
+                                Status : {req.status} 
                             </li>
                         ))}
 
                     </ul>
-                
-                    
             </div>
-        ) : <span>Loading </span>
-
+        )
     }
 }
 

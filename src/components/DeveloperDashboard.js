@@ -10,6 +10,8 @@ import {Switch} from "react-router";
 import {Container} from "reactstrap";
 import UserProfile from "./UserProfile";
 import DevRequests from "./DevRequests"
+import AvailableProjects from "./AvailableProjects"
+import DevHome from "./DevHome"
 
 class DeveloperDashboard extends Component{
 
@@ -36,9 +38,9 @@ class DeveloperDashboard extends Component{
                     <Col md={4}>
 
                         <ListGroup>
-                            <ListGroupItem><Link to="/DeveloperDashboard">Home</Link></ListGroupItem>
+                            <ListGroupItem><Link to="/DevHome">Home</Link></ListGroupItem>
                             <ListGroupItem><Link to="/Profile">Profile</Link></ListGroupItem>
-                            <ListGroupItem><Link to="/ProjectsAvailable">Projects available</Link></ListGroupItem>
+                            <ListGroupItem><Link to="/AvailableProjects">Projects available</Link></ListGroupItem>
                             <ListGroupItem><Link to="/Requests">Request status</Link></ListGroupItem>
                             <ListGroupItem><Link to="/Login" onClick={this.logout} >Logout</Link></ListGroupItem>
                         </ListGroup>
@@ -47,7 +49,9 @@ class DeveloperDashboard extends Component{
                         <Switch>
                             <Route exact path="/Profile" component={UserProfile}/>
                             <Route exact path="/Requests" component={DevRequests}/>
-                            {/* <Route path="/empDetails/:id" component={EmployeeDetails} /> */}
+                            <Route exact path="/AvailableProjects" component={AvailableProjects}/>
+                            <Route path="/DevHome" component={DevHome}/>
+                            <Route path="/" component={DevHome}/>
                         </Switch>
 
 
