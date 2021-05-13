@@ -4,6 +4,8 @@ import {Link} from "react-router-dom";
 import Row from "reactstrap/es/Row";
 import Col from "reactstrap/es/Col";
 import Container from "reactstrap/es/Container";
+import Card from "reactstrap/es/Card"
+import CardBody from "reactstrap/es/CardBody"
 
 class Requests extends Component{
 
@@ -11,6 +13,8 @@ class Requests extends Component{
         super(props);
         this.retrieveRequests = this.retrieveRequests.bind(this)
         this.updateRequest = this.updateRequest.bind(this)
+        this.approveRequest = this.approveRequest.bind(this)
+        this.rejectRequest = this.rejectRequest.bind(this)
         this.state = {
             requests: [],
             currentRequest: null
@@ -56,6 +60,48 @@ class Requests extends Component{
             });
     }
 
+    approveRequest(){
+        var data = {
+            empId: this.state.currentRequest.empId,
+            projectId: this.state.currentRequest.projectId,
+            status: "approved",
+            id: this.state.currentRequest.id
+        }
+        projectService.updateRequest(data)
+            .then(response => {
+                console.log(response.data);
+                this.setState({
+                    message: "The project was updated successfully!"
+                });
+                alert('Request approved!')
+                this.props.history.push('/Requests')
+            })
+            .catch(e => {
+                console.log(e);
+            });
+    }
+
+    rejectRequest(){
+        var data = {
+            empId: this.state.currentRequest.empId,
+            projectId: this.state.currentRequest.projectId,
+            status: "rejected",
+            id: this.state.currentRequest.id
+        }
+        projectService.updateRequest(data)
+            .then(response => {
+                console.log(response.data);
+                this.setState({
+                    message: "The project was updated successfully!"
+                });
+                alert('Request rejected!')
+                this.props.history.push('/Requests')
+            })
+            .catch(e => {
+                console.log(e);
+            });
+    }
+
 
 
     render() {
@@ -63,18 +109,23 @@ class Requests extends Component{
         return(
             <div>
 
-                <Container>
-
+<br/>
                     <Row>
+                    
                         <Col md={6}>
                         <ul className="list-group">
                         {requests &&
-                        requests.map((request, index) => (
-                            <li className={"list-group-item " +(index === currentIndex ? "active" : "")}
-                                onClick={() => this.setActiveRequest(request, index)}
-                                key={index}>
-                                Project ID : {request.projectId} <br/>
-                            </li>
+                        requests.map((request, index) => ( 
+                            <Card  outline color="info">
+                                <CardBody
+                                    className={"list-group-item " +(index === currentIndex ? "active" : "")}
+                                    onClick={() => this.setActiveRequest(request, index)}
+                                    key={index}>
+                                    Project ID : {request.projectId} <br/>
+                                </CardBody>
+                            </Card>
+
+                            
                         ))}
                     </ul>
                         </Col>
@@ -85,25 +136,20 @@ class Requests extends Component{
                         <div>
                             
                             <div>
-                                <label>
-                                    <strong>Project ID:</strong>
-                                </label>{" "}
-                                {currentRequest.projectId}
+                                <h4>Project ID: {currentRequest.projectId} </h4>
                             </div>
                             <div>
-                                <label>
-                                    <strong>Employee ID:</strong>
-                                </label>{" "}
-                                {currentRequest.empId}
+                                <h4>Employee ID: {currentRequest.empId}</h4>
+                                
                             </div>
                             
                        
-
-                        <button type="submit" className="badge badge-success" onClick={this.updateRequest}>
+                            <br/><br/>
+                        <button type="submit" className="badge badge-success" onClick={this.approveRequest}>
                             Approve
                         </button>
-                        <br/>
-                        <button type="submit" className="badge badge-success" onClick={this.updateRequest}>
+                        <br/><br/>
+                        <button type="submit" className="badge badge-success" onClick={this.rejectRequest}>
                             Reject
                         </button>
                         
@@ -115,7 +161,7 @@ class Requests extends Component{
                             </div>        
                         </Col>
                     </Row>
-                </Container>
+             
 
 
             </div>

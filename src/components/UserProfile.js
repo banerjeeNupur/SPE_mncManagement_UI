@@ -24,7 +24,7 @@ class UserProfile extends Component{
             // get user by id from api
             this.getUser(localStorage.getItem('current_user_id'));
         }
-
+ 
         getUser(id){
             EmployeeService.getUser(id)
             .then(response => {
@@ -56,6 +56,7 @@ class UserProfile extends Component{
                         this.setState({
                             message: "The project was updated successfully!"
                         });
+                        alert('Profile updated!')
                     })
                     .catch(e => {
                         console.log(e);

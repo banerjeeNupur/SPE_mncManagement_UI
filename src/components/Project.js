@@ -51,7 +51,10 @@ class Project extends Component{
                 console.log(response.data);
                 this.setState({
                     message: "The project was updated successfully!"
+                    
                 });
+                alert("The project was updated successfully!");
+                this.props.history.push('/ProjectList')
             })
             .catch(e => {
                 console.log(e);
@@ -105,12 +108,15 @@ class Project extends Component{
             };
         });
     }
-
+ 
     deleteProject() {
+        console.log('in delete project: ',this.state.currentTutorial)
         projectService.delete(this.state.currentTutorial.id)
             .then(response => {
-                console.log(response.data);
-                this.props.history.push('/project')
+                console.log('in the response section',response.data);
+                alert('Project deleted!')
+                this.props.history.push('/ProjectList')
+                
             })
             .catch(e => {
                 console.log(e);

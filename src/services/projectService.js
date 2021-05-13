@@ -20,6 +20,7 @@ class ProjectService {
     }
 
     delete(id) {
+        
         return http.delete(`/project/delete/${id}`);
     }
 
@@ -32,6 +33,7 @@ class ProjectService {
     }
 
     makeRequest(data){
+        
         return http.post("/project/request/add",data);
     }
 

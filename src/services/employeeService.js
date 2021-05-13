@@ -25,6 +25,10 @@ class EmployeeService{
     getAllDev(){
         return http.get("/list/dev");
     }
+
+    deleteEmployee(id){
+        return http.delete(`/employee/delete/${id}`);
+    }
 }
 
 export default new EmployeeService();

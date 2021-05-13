@@ -3,6 +3,9 @@ import projectService from "../services/projectService";
 import {Link} from "react-router-dom";
 import Row from "reactstrap/es/Row";
 import Col from "reactstrap/es/Col";
+import Card from "reactstrap/es/Card"
+import CardBody from "reactstrap/es/CardBody"
+import CardTitle from "reactstrap/es/CardTitle"
 
 class ProjectList extends Component{
 
@@ -60,14 +63,14 @@ class ProjectList extends Component{
                     <ul className="list-group">
                         {projects &&
                         projects.map((p, index) => (
-                            <li
-                                className={"list-group-item" +(index === currentIndex ? "active" : "")}
-                                onClick={() => this.setActiveProject(p, index)}
-                                key={index}>
-
-                                Project ID : {p.projectId}<br/>
-                                
-                            </li>
+                            <Card  outline color="info">
+                                <CardBody
+                                    className={"list-group-item " +(index === currentIndex ? "active" : "")}
+                                    onClick={() => this.setActiveProject(p, index)}
+                                    key={index}>
+                                    Project ID : {p.projectId} 
+                                </CardBody>
+                            </Card>
                         ))}
                     </ul>
                     </Col>    
@@ -75,29 +78,23 @@ class ProjectList extends Component{
                <div>
                     {currentProject ?(
                         <div>
-                            <h4>Project Details</h4>
+                            
+                            
                             
                             <div>
-                                <label>
-                                    <strong>Project ID:</strong>
-                                </label>{" "}
-                                {currentProject.projectId}
+                                <h3>Project ID : {currentProject.projectId} </h3>
                             </div>
 
                             <div>
-                                <label>
-                                    <strong>Title:</strong>
-                                </label>{" "}
-                                {currentProject.name}
-                            </div>
+                            <h4>Title : {currentProject.name} </h4>
 
+                            </div>
+ 
                             <div>
-                                <label>
-                                    <strong>Technology:</strong>
-                                </label>{" "}
-                                {currentProject.technology}
+                                <h4>Technology: {currentProject.technology}</h4>
                             </div>
 
+                            
 
                             <Link
                                 to={"/view/" + currentProject.id}
@@ -121,15 +118,19 @@ class ProjectList extends Component{
                 </Row>
                 <br/><br/>
                 <Row>
-                <Link
+                    <Col md={5}></Col>
+                    <Col md={6}>
+                    <Link
                     to={"/addProject"}
-                    className="badge badge-warning">
-                    Add a new Project
+                    className="badge badge-info info">
+                    Add Project
                 </Link>
+                    </Col>
+                
                 </Row>
                 
 
-
+ 
             </div>
         )
     }
