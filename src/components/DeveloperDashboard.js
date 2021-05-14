@@ -108,13 +108,13 @@ class DeveloperDashboard extends Component {
                                     <Link style={{ color: "#f2f3fa" }} to="/DevHome">Home</Link>
                                 </ListGroupItem>
                                 <ListGroupItem style={{ backgroundColor: "#24134e" }}>
-                                    <Link style={{ color: "#f2f3fa" }} to="/Profile">Profile</Link>
+                                    <Link style={{ color: "#f2f3fa" }} to="/DevProfile">Profile</Link>
                                 </ListGroupItem>
                                 <ListGroupItem style={{ backgroundColor: "#24134e" }}>
                                     <Link style={{ color: "#f2f3fa" }} to="/AvailableProjects">Projects available</Link>
                                 </ListGroupItem>
                                 <ListGroupItem style={{ backgroundColor: "#24134e" }}>
-                                    <Link style={{ color: "#f2f3fa" }} to="/Requests">Request status</Link>
+                                    <Link style={{ color: "#f2f3fa" }} to="/DevRequests">Request status</Link>
                                 </ListGroupItem>
                                 <ListGroupItem style={{ backgroundColor: "#24134e" }}>
                                     <Link style={{ color: "#f2f3fa" }} to="/Login" onClick={this.logout} >Logout</Link>
@@ -123,8 +123,8 @@ class DeveloperDashboard extends Component {
                         </Col>
                         <Col md={9} style={{ paddingRight: "0px", paddingLeft: "0px" }}>
                             <Switch>
-                                <Route exact path="/Profile" component={UserProfile} />
-                                <Route exact path="/Requests" component={DevRequests} />
+                                <Route exact path="/DevProfile" component={UserProfile} />
+                                <Route exact path="/DevRequests" component={DevRequests} />
                                 <Route exact path="/AvailableProjects" component={AvailableProjects} />
                                 <Route path="/DevHome" component={DevHome} />
                                 <Route path="/" component={DevHome} />

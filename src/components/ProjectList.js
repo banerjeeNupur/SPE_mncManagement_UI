@@ -21,6 +21,7 @@ class ProjectList extends Component{
     }
 
     componentDidMount() {
+        console.log("Inside Component did mount");
         this.retrieveProjects();
     }
 

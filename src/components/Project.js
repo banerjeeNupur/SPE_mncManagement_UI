@@ -14,6 +14,7 @@ class Project extends Component{
         this.onChangeTechnology = this.onChangeTechnology.bind(this);
         this.deleteProject = this.deleteProject.bind(this);
         this.state = {
+            id: this.props.match.params.id,
             currentTutorial: {
                 id: null,
                 name: "",
@@ -27,7 +28,15 @@ class Project extends Component{
     }
 
     componentDidMount() {
-        this.getProject(this.props.match.params.id);
+        if(this.state.id === undefined){
+            this.setState({
+                    id: JSON.parse(localStorage.getItem('idValue'))
+                }, () => this.getProject(this.state.id))
+        }
+        else{
+            localStorage.setItem('idValue', JSON.stringify(this.state.id))
+            this.getProject(this.state.id);
+        }
     }
 
     getProject(id) {
