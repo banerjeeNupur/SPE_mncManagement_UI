@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import projectService from "../services/projectService";
 import {Link, Route} from "react-router-dom";
-
+import Row from "reactstrap/es/Row";
+import Col from "reactstrap/es/Col";
+import Card from "reactstrap/es/Card"
+import CardBody from "reactstrap/es/CardBody"
 
 class DevRequests extends Component{
 
@@ -51,7 +54,22 @@ class DevRequests extends Component{
         return (
            
                 <div >
-                <h3>Request list</h3>
+                    <Row>
+                        <Col md={12}>
+                            <ul className="list-group">
+                            {request && request.map((req) => (
+                                
+                                <Card  outline color="info">
+                                <CardBody
+                                    className={"list-group-item "}>
+                                    Project ID : {req.projectId} <br/>
+                                    Status : {req.status} 
+                                </CardBody>
+                            </Card>
+                        ))}
+                            </ul>
+                        </Col>
+                    </Row>
                 
                 <ul className="list-group">
                         {request &&

@@ -52,7 +52,7 @@ class ProjectList extends Component{
         });
     }
 
-
+ 
     render() {
         const { projects, currentProject, currentIndex } = this.state;
         return(

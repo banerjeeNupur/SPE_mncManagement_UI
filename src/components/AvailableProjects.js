@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import projectService from "../services/projectService";
 import {Link, Route} from "react-router-dom";
+import Card from "reactstrap/es/Card"
+import CardBody from "reactstrap/es/CardBody"
+import Row from "reactstrap/es/Row";
+import Col from "reactstrap/es/Col";
 
 class AvailableProjects extends Component{
 
@@ -51,6 +55,7 @@ class AvailableProjects extends Component{
                     loaded:false,
                     message: "The request was updated successfully!"
                 });
+                alert('Request sent!')
             })
             .catch(e => {
                 console.log(e);
@@ -60,6 +65,7 @@ class AvailableProjects extends Component{
     }
 
     refreshList(){
+        console.log('refresh list')
         this.loadProjects(localStorage.getItem('current_user_id'))
     }
 
@@ -75,36 +81,39 @@ class AvailableProjects extends Component{
 
         const { projects, currentIndex} = this.state
         return(
-            <div className="col-md-6">
-                    <ul className="list-group">
+            <div >
+
+                <Row>
+                    
+                    <Col md={12}>
+                        <ul className="list-group">
                         {projects &&
                         projects.map((project, index) => (
-                            <li className={ "list-group-item " + (index === currentIndex ? "active" : "")}
-                                onClick={() => this.sendRequest(project, index)}
-                                key={index}
-                            >
-                                {/*{tutorial.projectId} <br/>*/}
-                                {project.name} <br/>
-                                {/*{tutorial.manager_id} <br/>*/}
-                                {/*{tutorial.technology} <br/>*/}
-                                {/*{tutorial.status} <br/>*/}
+                                <Card  outline color="info">
+                                    <CardBody
+                                        className={ "list-group-item " + (index === currentIndex ? "active" : "")}
+                                        onClick={() => this.sendRequest(project, index)}
+                                        key={index}>
+                                        Project ID : {project.projectId} <br/>
+                                Name : {project.name} <br/>
+                                Technology : {project.technology} <br/> 
+                                    </CardBody>
+                                </Card>
+                            ))}
+                        </ul>
+                        </Col>    
+                        
+                    
+                </Row>
+                <Row>
+                <Col md={4}></Col>
+                            <Col md={6}>
+                            <p>Click on a project to send a request</p>
+                            </Col>
+                        
+                        <Col md={3}></Col>
+                </Row>
 
-                            </li>
-                        ))}
-
-                    </ul>
-
-                    <br/>
-                    <br/>
-                    <p>{this.state.message}</p>
-
-                    <button
-                        type="submit"
-                        className="badge badge-success"
-                        onClick={this.refreshList}
-                    >
-                        Refresh list
-                    </button>
                 </div>
         )
     }
