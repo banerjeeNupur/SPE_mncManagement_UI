@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import {Chart} from "react-chartjs-2";
 import { Container } from 'reactstrap';
 import projectService from "../services/projectService";
 import Row from "reactstrap/es/Row";

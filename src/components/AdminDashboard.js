@@ -40,10 +40,9 @@ class AdminDashboard extends Component {
                     <Header />
                     <Row spacing={0} style={{ margin: "0px" }}>
                         <Col md={3} style={{ paddingRight: "0px", paddingLeft: "0px" }}>
+                            
                             <ListGroup style={{ backgroundColor: "#24134e", minHeight: "85vh" }}>
-                                <ListGroupItem style={{ backgroundColor: "#24134e" }}>
-                                    <Link style={{ color: "#f2f3fa" }} to="/AdminDashboard">Home</Link>
-                                </ListGroupItem>
+                                
                                 <ListGroupItem style={{ backgroundColor: "#24134e" }}>
                                     <Link style={{ color: "#f2f3fa" }} to="/Add">Register a new User</Link>
                                 </ListGroupItem>
@@ -57,9 +56,11 @@ class AdminDashboard extends Component {
                             </ListGroup>
                         </Col>
                         <Col md={9} style={{ paddingRight: "0px", paddingLeft: "0px" }}>
+                        <h4>List of employees</h4>
                             <Switch>
                                 <Route exact path="/Add" component={Register} />
                                 <Route path="/ViewAll" component={UserList} />
+                                <Route path="/" component={UserList} />
                             </Switch>
                         </Col>
                     </Row>

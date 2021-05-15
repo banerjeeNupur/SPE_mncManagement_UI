@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import projectService from "../services/projectService";
-import {Link, Route} from "react-router-dom";
 import Row from "reactstrap/es/Row";
 import Col from "reactstrap/es/Col";
 import Card from "reactstrap/es/Card"

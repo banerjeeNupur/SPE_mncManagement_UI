@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import {Link, Route} from "react-router-dom";
 import employeeService from "../services/employeeService";
 import Row from "reactstrap/es/Row";
 import Col from "reactstrap/es/Col";
@@ -83,7 +82,7 @@ class UserList extends Component{
 
  
     render() {
-        const { searchTitle, employees, currentEmployee, currentIndex } = this.state;
+        const { employees, currentEmployee, currentIndex } = this.state;
         return(
             <div>
                 <Row>

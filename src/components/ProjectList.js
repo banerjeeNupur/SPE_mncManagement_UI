@@ -5,7 +5,7 @@ import Row from "reactstrap/es/Row";
 import Col from "reactstrap/es/Col";
 import Card from "reactstrap/es/Card"
 import CardBody from "reactstrap/es/CardBody"
-import CardTitle from "reactstrap/es/CardTitle"
+
 
 class ProjectList extends Component{
 
