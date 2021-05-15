@@ -55,7 +55,7 @@ class UserProfile extends Component{
                     .then(response => {
                         console.log(response.data);
                         this.setState({
-                            message: "The project was updated successfully!"
+                            message: "The profile was updated successfully!"
                         });
                         alert('Profile updated!')
                     })

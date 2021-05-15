@@ -73,6 +73,10 @@ class AddProject extends Component{
                     submitted: true
                 });
                 console.log(response.data);
+                alert('project added!')
+                this.props.history.push({
+                    pathname: '/ManagerDashboard',
+                });
             })
             .catch(e => {
                 console.log(e);
@@ -96,14 +100,7 @@ class AddProject extends Component{
     render() {
         return(
             <div className="submit-form">
-                {this.state.submitted ? (
-                    <div>
-                        <h4>You submitted successfully!</h4>
-                        <button className="btn btn-success" onClick={this.newProject}>
-                            Add
-                        </button>
-                    </div>
-                ) : (
+                
 
                     <div>
                         <div className="form-group">
@@ -176,7 +173,7 @@ class AddProject extends Component{
                             Submit
                         </button>
                     </div>
-                    )}
+                    
             </div>
         )
     }

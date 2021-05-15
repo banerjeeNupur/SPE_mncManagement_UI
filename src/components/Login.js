@@ -88,7 +88,7 @@ class Login extends Component {
                     pathname: '/ManagerDashboard',
                 });
             }
-            else if (responseJson.user_type === 'dev') {
+            else if (responseJson.user_type === 'developer') {
                 this.props.history.push({
                     pathname: '/DeveloperDashboard',
                 });
