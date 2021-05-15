@@ -46,7 +46,7 @@ class ManagerDashboard extends Component {
                             <ListGroup style={{ backgroundColor: "#24134e", minHeight: "85vh" }}>
                                 <ListGroupItem style={{ backgroundColor: "#24134e" }}><Link style={{ color: "#f2f3fa" }} to="/ManagerHome">Home</Link></ListGroupItem>
                                 <ListGroupItem style={{ backgroundColor: "#24134e" }}><Link style={{ color: "#f2f3fa" }} to="/ProjectList">Projects</Link></ListGroupItem>
-                                <ListGroupItem style={{ backgroundColor: "#24134e" }}><Link style={{ color: "#f2f3fa" }} to="/Requests">Project requests</Link></ListGroupItem>
+                                <ListGroupItem style={{ backgroundColor: "#24134e" }}><Link style={{ color: "#f2f3fa" }} to="/ManagerRequests">Project requests</Link></ListGroupItem>
                                 <ListGroupItem style={{ backgroundColor: "#24134e" }}><Link style={{ color: "#f2f3fa" }} to="/ManagerUserProfile">Profile</Link></ListGroupItem>
                                 <ListGroupItem style={{ backgroundColor: "#24134e" }}><Link style={{ color: "#f2f3fa" }} to="/DevList">Developer details</Link></ListGroupItem>
                                 <ListGroupItem style={{ backgroundColor: "#24134e" }}><Link style={{ color: "#f2f3fa" }} to="/Login" onClick={this.logout} >Logout</Link></ListGroupItem>
@@ -59,7 +59,7 @@ class ManagerDashboard extends Component {
                                 <Route path="/addProject" component={AddProject} />
                                 <Route path="/ManagerHome" component={ManagerChart} />
                                 <Route path="/ManagerUserProfile" component={UserProfile} />
-                                <Route path="/Requests" component={Requests} />
+                                <Route path="/ManagerRequests" component={Requests} />
                                 <Route path="/DevList" component={DevList} />
                                 <Route path="/" component={ManagerChart} />
                             </Switch>

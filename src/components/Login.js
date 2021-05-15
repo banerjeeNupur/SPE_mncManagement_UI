@@ -52,6 +52,11 @@ class Login extends Component {
         })
     }
 
+    componentDidMount(){
+        localStorage.removeItem('current_user_id')
+        localStorage.removeItem('current_user_type')
+    }
+
     async handleSubmit(event) {
         event.preventDefault();
         event.stopPropagation();
@@ -99,12 +104,14 @@ class Login extends Component {
             this.setState({
                 errorMessage: true
             })
+            alert('backend server is down!')
         } else {
-            alert('an error occured! Please refresh the page!');
-            this.props.history.push({
-                pathname: '/Error404',
-                message: 'Backend server is down'
-            });
+            alert('login : an error occured! Please refresh the page!');
+            // this.props.history.push({
+            //     pathname: '/Error404',
+            //     message: 'Backend server is down'
+            // });
+            alert('internal error occured!')
         }
     }
 

@@ -23,6 +23,11 @@ class DevHome extends Component{
     }
 
     componentDidMount() {
+        if(localStorage.getItem('current_user_id') === undefined){
+            this.props.history.push({
+                pathname: '/Login',
+            });
+        }
         this.getActiveProjects(localStorage.getItem('current_user_id'))
         this.getCompletedProjects(localStorage.getItem('current_user_id'))
     }
@@ -39,7 +44,7 @@ class DevHome extends Component{
             })
             .catch(e => {
                 console.log(e);
-                alert('an error occured! Please refresh the page!');
+                alert('an error occured! Please refresh the page or try logging back in!');
             });
 
     }
@@ -56,7 +61,7 @@ class DevHome extends Component{
             })
             .catch(e => {
                 console.log(e);
-                alert('an error occured! Please refresh the page!');
+                alert('an error occured! Please refresh the page or try logging back in!');
             });
 
     }

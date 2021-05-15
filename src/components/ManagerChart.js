@@ -37,7 +37,7 @@ class DemoChart extends Component{
             })
             .catch(e => {
                 console.log(e);
-                alert('an error occured! Please refresh the page!');
+                alert('an error occured! Please refresh the page or try logging back in!');
             });
 
     }
@@ -82,39 +82,48 @@ class DemoChart extends Component{
                         hoverBorderColor: 'black'
                     }]
                 },
-                options:{
-                    title:{
-                        display: true,
-                        text: 'Status of projects',
-                        fontSize: 25
-                    },
-                    legend:{
-                        display: true,
-                        position: 'right',
-                        labels:{
-                            fontColor: 'black'
-                        }
-                    },
-                    layout:{
-                        padding:{
-                            left:50,
-                            right:0,
-                            top:0,
-                            bottom:0
-                        }
-                    },
-                    tooltips:{
-                        enabled: false
+                options: {
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Project Status',
+                            fontsize: 25
+                        },
+                        legend:{
+                            display: true,
+                            position: 'right',
+                            labels:{
+                                fontColor: 'black'
+                            }
+                        },
+                        
                     }
                 }
             })
 
             // ---------------------
 
-            let techChart = document.getElementById('techChart').getContext('2d')
+            let techChart = document.getElementById('tech_chart').getContext('2d')
             let tech_chart = new Chart(techChart,
             {
                 type: "pie",
+                options:{
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Project Type',
+                            fontsize: 25
+                        },
+                        legend:{
+                            display: true,
+                            position: 'right',
+                            labels:{
+                                fontColor: 'black'
+                            }
+                        },
+                        
+                    }
+                },
                 data:{
                     labels: ['frontend','backend','devops'],
                     datasets: [{
@@ -124,32 +133,9 @@ class DemoChart extends Component{
                         hoverBorderWidth: 2,
                         hoverBorderColor: 'black'
                     }]
-                },
-                options:{
-                    title:{
-                        display: true,
-                        text: 'Status of projects',
-                        fontSize: 25
-                    },
-                    legend:{
-                        display: true,
-                        position: 'right',
-                        labels:{
-                            fontColor: 'black'
-                        }
-                    },
-                    layout:{
-                        padding:{
-                            left:50,
-                            right:0,
-                            top:0,
-                            bottom:0
-                        }
-                    },
-                    tooltips:{
-                        enabled: false
-                    }
                 }
+                
+                
             })
 
     }
@@ -168,7 +154,7 @@ class DemoChart extends Component{
                         </Col>
                         {/* <Col md={2}></Col> */}
                         <Col md={5}>
-                        <canvas id="techChart"></canvas>   
+                        <canvas id="tech_chart"></canvas>   
                         </Col>    
                     </Row> 
                     

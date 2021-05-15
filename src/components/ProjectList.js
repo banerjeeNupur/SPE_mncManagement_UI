@@ -35,7 +35,7 @@ class ProjectList extends Component{
             })
             .catch(e => {
                 console.log(e);
-                alert('an error occured! Please refresh the page!');
+                alert('an error occured! Please refresh the page or try logging back in!');
             });
     }
 

@@ -18,13 +18,13 @@ class App extends Component{
                 <Route exact path="/Login" component={Login}/>
                 <Route exact path="/ManagerDashboard" component={ManagerDashboard}/>
                 <Route exact path="/AdminDashboard" component={AdminDashboard}/>
-                <Route exact path="/Requests" component={Requests}/>
+                
                 <Route exact path="/DeveloperDashboard" component={DeveloperDashboard}/>
                 <Route exact path="/ProjectList" component={ManagerDashboard} />
                 <Route path="/addProject" component={ManagerDashboard} />
                 <Route path="/ManagerHome" component={ManagerDashboard} />
                 <Route path="/ManagerUserProfile" component={ManagerDashboard} />
-                <Route path="/Requests" component={ManagerDashboard} />
+                <Route path="/ManagerRequests" component={ManagerDashboard} />
                 <Route path="/DevList" component={ManagerDashboard} />
                 <Route path="/view/:id" component={ManagerDashboard} />
                 <Route exact path="/DevProfile" component={DeveloperDashboard} />

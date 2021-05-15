@@ -36,7 +36,7 @@ class DevRequests extends Component{
             })
             .catch(e => {
                 console.log(e);
-                alert('an error occured! Please refresh the page!');
+                alert('an error occured! Please refresh the page or try logging back in!');
             });
         
     }
@@ -71,17 +71,7 @@ class DevRequests extends Component{
                         </Col>
                     </Row>
                 
-                <ul className="list-group">
-                        {request &&
-                        request.map((req) => (
-                       
-                            <li className={"list-group-item "}>
-                                Project ID : {req.projectId} <br/>
-                                Status : {req.status} 
-                            </li>
-                        ))}
-
-                    </ul>
+                
             </div>
         )
     }

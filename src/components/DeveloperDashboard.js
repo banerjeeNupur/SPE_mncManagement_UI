@@ -28,6 +28,15 @@ class DeveloperDashboard extends Component {
         });
     }
 
+    componentDidMount(){
+        if(localStorage.getItem('current_user_id') === undefined){
+            console.log('no user')
+            this.props.history.push({
+                pathname: '/Login',
+            });
+        }
+    }
+
     render() {
         return (
             <Router>
