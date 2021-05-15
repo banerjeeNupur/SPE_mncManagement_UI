@@ -100,6 +100,7 @@ class Login extends Component {
                 errorMessage: true
             })
         } else {
+            alert('an error occured! Please refresh the page!');
             this.props.history.push({
                 pathname: '/Error404',
                 message: 'Backend server is down'

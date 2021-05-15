@@ -36,6 +36,7 @@ class DevRequests extends Component{
             })
             .catch(e => {
                 console.log(e);
+                alert('an error occured! Please refresh the page!');
             });
         
     }
