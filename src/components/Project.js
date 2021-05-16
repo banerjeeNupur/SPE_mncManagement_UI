@@ -15,7 +15,7 @@ class Project extends Component{
         this.deleteProject = this.deleteProject.bind(this);
         this.state = {
             id: this.props.match.params.id,
-            currentTutorial: {
+            currentProject: {
                 id: null,
                 name: "",
                 status: "",
@@ -43,7 +43,7 @@ class Project extends Component{
         ProjectService.get(id)
             .then(response => {
                 this.setState({
-                    currentTutorial: response.data
+                    currentProject: response.data
                 });
                 console.log(response.data);
             })
@@ -55,7 +55,7 @@ class Project extends Component{
 
     updateProject() {
         ProjectService.update(
-            this.state.currentTutorial
+            this.state.currentProject
         )
             .then(response => {
                 console.log(response.data);
@@ -77,7 +77,7 @@ class Project extends Component{
         this.setState(function(prevState) {
             return {
                 currentTutorial: {
-                    ...prevState.currentTutorial,
+                    ...prevState.currentProject,
                     name: name
                 }
             };
@@ -89,7 +89,7 @@ class Project extends Component{
         this.setState(function(prevState) {
             return {
                 currentTutorial: {
-                    ...prevState.currentTutorial,
+                    ...prevState.currentProject,
                     technology: technology
                 }
             };
@@ -101,7 +101,7 @@ class Project extends Component{
         this.setState(function(prevState) {
             return {
                 currentTutorial: {
-                    ...prevState.currentTutorial,
+                    ...prevState.currentProject,
                     status: status
                 }
             };
@@ -113,7 +113,7 @@ class Project extends Component{
         this.setState(function(prevState) {
             return {
                 currentTutorial: {
-                    ...prevState.currentTutorial,
+                    ...prevState.currentProject,
                     manager_id: manager_id
                 }
             };
@@ -121,8 +121,8 @@ class Project extends Component{
     }
  
     deleteProject() {
-        console.log('in delete project: ',this.state.currentTutorial)
-        projectService.delete(this.state.currentTutorial.id)
+        console.log('in delete project: ',this.state.currentProject)
+        projectService.delete(this.state.currentProject.id)
             .then(response => {
                 console.log('in the response section',response.data);
                 alert('Project deleted!')
@@ -136,15 +136,15 @@ class Project extends Component{
     }
 
     render() {
-        const { currentTutorial } = this.state;
+        const { currentProject } = this.state;
 
         return(
-            <div> {currentTutorial ? (
+            <div> {currentProject ? (
                 <div className="edit-form">
 
                     <form>
                         <div className="form-group">
-                            <label htmlFor="title">Project ID : {currentTutorial.projectId} </label>
+                            <label htmlFor="title">Project ID : {currentProject.projectId} </label>
                         </div>
 
                         <div className="form-group">
@@ -153,7 +153,7 @@ class Project extends Component{
                                 type="text"
                                 className="form-control"
                                 id="name"
-                                value={currentTutorial.name}
+                                value={currentProject.name}
                                 onChange={this.onChangeName}
                             />
                         </div>
@@ -163,7 +163,7 @@ class Project extends Component{
                                 type="text"
                                 className="form-control"
                                 id="technology"
-                                value={currentTutorial.technology}
+                                value={currentProject.technology}
                                 onChange={this.onChangeTechnology}
                             />
                         </div>
@@ -174,7 +174,7 @@ class Project extends Component{
                                 type="text"
                                 className="form-control"
                                 id="status"
-                                value={currentTutorial.status}
+                                value={currentProject.status}
                                 onChange={this.onChangeStatus}
                             />
                         </div>
@@ -185,7 +185,7 @@ class Project extends Component{
                                 type="text"
                                 className="form-control"
                                 id="mgrId"
-                                value={currentTutorial.manager_id}
+                                value={currentProject.manager_id}
                                 onChange={this.onChangeManager}
                             />
                         </div>
@@ -209,12 +209,12 @@ class Project extends Component{
                     >
                         Update
                     </button>
-                    <p>{this.state.message}</p>
+                    
                 </div>
             ) : (
                 <div>
                     <br />
-                    <p>Please click on a Tutorial...</p>
+                    <p>Please click on a Project to view details...</p>
                 </div>
             )} </div>
         )

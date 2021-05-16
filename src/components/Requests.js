@@ -44,21 +44,6 @@ class Requests extends Component{
         });
     }
 
-    updateRequest(){
-        projectService.updateRequest(
-            this.state.currentRequest
-        )
-            .then(response => {
-                console.log(response.data);
-                this.setState({
-                    message: "The request was updated successfully!"
-                });
-            })
-            .catch(e => {
-                console.log(e);
-                alert('an error occured! Please refresh the page or try logging back in!');
-            });
-    }
 
     approveRequest(){
         var data = {
